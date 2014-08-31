@@ -64,3 +64,42 @@ function caesar(text,n,flag){
 	}
 	return outputtext;
 }
+
+function columnar_transposition(text, n, flag){
+/**
+ * Converts the input text using a columnar transposition.
+ * <b>Important note:</b> For the purpose of Ingress, use flag = 0 always.
+ * @param {string} text - text to be encrypted/decrypted.
+ * @param {integer} n - number of columns.
+ * @param {integer} flag - 0: for encrypt 1: for decrypt
+ * @return {string} - returns columnar encrypted/decrypted text.
+ */
+	var character = "";
+	var outputchar = "";
+	var outputtext = "";
+	
+	var i = 0;
+	var j = i;
+	var break = 0;
+	var m;
+
+	if (flag = 0){
+		m = n;
+	}
+	if (flag = 1){
+		m = Math.ceil(text.length / n);
+	}
+	while(break = 0){
+		outputchar = text.charAt(j);
+		outputtext = outputtext+outputchar;
+		
+		j = j+m;
+		if (j >= text.length){
+			i = i+1;
+			j = i;
+		}
+		if(j >= i+m){
+			break = 1;
+		}
+	}
+}
