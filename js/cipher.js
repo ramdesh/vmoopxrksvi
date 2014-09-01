@@ -1,4 +1,7 @@
-function reverse() {
+/**
+* Converts the input text to its reverse.
+*/
+function reverse(text) {
   var text = document.getElementById("ciphertext").value;
   var outputArea = document.getElementById("outputtext");
 
@@ -6,8 +9,6 @@ function reverse() {
 
   outputArea.value = reversedString;
 }
-
-function atbash(text){
 /**
  * Converts the input text in to an atbash cipher using an alphabet [a-z] and [A-Z]. 
  * Numbers and all other characters are left as they are.
@@ -17,6 +18,8 @@ function atbash(text){
  * to find the atbash. Will not work with anything outside the a-z alphabet OR numbers.
  * @author - KJ <kulendra@gmail.com>
  */
+function atbash(text){
+
 	var i = 0;
 	var character = "";
 	var outputchar = "";
@@ -36,8 +39,6 @@ function atbash(text){
 	}
 	return outputtext;
 }
-
-function caesar(text,n,flag){
 /**
  * Converts the input text using caesar cipher using an alphabet [a-z] and [A-Z]. 
  * @param {string} text - text to be encrypted/decrypted.
@@ -45,6 +46,8 @@ function caesar(text,n,flag){
  * @param {integer} flag - 0: for encrypt 1: for decrypt
  * @return {string} - returns caesar encrypted/decrypted text.
  */
+function caesar(text,n,flag){
+
 	var i = 0;
 	var character = "";
 	var outputchar = "";
