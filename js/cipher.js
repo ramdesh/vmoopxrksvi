@@ -2,12 +2,10 @@
 * Converts the input text to its reverse.
 */
 function reverse(text) {
-  var text = document.getElementById("ciphertext").value;
-  var outputArea = document.getElementById("outputtext");
 
-  var reversedString = text.split("").reverse().join("");
+  return reversedString = text.split("").reverse().join("");
 
-  outputArea.value = reversedString;
+  
 }
 /**
  * Converts the input text in to an atbash cipher using an alphabet [a-z] and [A-Z]. 
