@@ -2,6 +2,8 @@ function changeCipher() {
   var cipherText = document.getElementById("ciphertext").value;
   document.getElementById("reverse").value = reverse(cipherText);
   document.getElementById("atbash").value = atbash(cipherText); 
+  document.getElementById("odd").value = extractAlternatingChars(cipherText, 0); 
+  document.getElementById("even").value = extractAlternatingChars(cipherText, 1); 
 }
 /**
  * Converts the input text to its reverse.
@@ -12,6 +14,27 @@ function reverse(text) {
 
   return reversedString = text.split("").reverse().join("");
 
+}
+/**
+ * Extracts even/odd characters from input text
+ * @param {string} text - text to be extracted from.
+ * @param {integer} parity - shift for parity. use 0 to extract odd characters and 1 for even.
+ * @return {string} - returns extracted text.
+ * @author - Cyan
+ */
+function extractAlternatingChars(text, parity) {
+
+  var i = 0;
+  var outputtext = "";
+  if (parity==1 | parity==0) {
+    i = parity;
+  } else {
+    return "WTF is this? Wrong args!!";
+  }
+  for (i; i < text.length; i=i+2) {
+    outputtext = outputtext + text.charAt(i);
+  }
+  return outputtext;
 
 }
 /**
