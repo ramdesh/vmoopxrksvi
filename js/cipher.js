@@ -1,8 +1,7 @@
 function changeCipher() {
   var cipherText = document.getElementById("ciphertext").value;
   document.getElementById("reverse").value = reverse(cipherText);
-// atbash function has an issue with upper case chars. commented out until fixed. 
-//  document.getElementById("atbash").value = atbash(cipherText); 
+  document.getElementById("atbash").value = atbash(cipherText); 
   document.getElementById("odd").value = extractAlternatingChars(cipherText, 0); 
   document.getElementById("even").value = extractAlternatingChars(cipherText, 1); 
   document.getElementById("filter-uppercase").value = removeCharRange(cipherText, "uppercase");
@@ -95,7 +94,7 @@ function atbash(text) {
   for (i = 0; i < text.length; i++) {
     character = text.charCodeAt(i);
     if (character >= 65 && character <= 90) {
-      outputchar = fromCharCode(155 - character);
+      outputchar = String.fromCharCode(155 - character);
     } else if (character >= 97 && character <= 122) {
       outputchar = String.fromCharCode(219 - character);
     } else {
