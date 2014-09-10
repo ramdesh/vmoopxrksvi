@@ -1,9 +1,13 @@
 function changeCipher() {
   var cipherText = document.getElementById("ciphertext").value;
   document.getElementById("reverse").value = reverse(cipherText);
-  document.getElementById("atbash").value = atbash(cipherText); 
+// atbash function has an issue with upper case chars. commented out until fixed. 
+//  document.getElementById("atbash").value = atbash(cipherText); 
   document.getElementById("odd").value = extractAlternatingChars(cipherText, 0); 
   document.getElementById("even").value = extractAlternatingChars(cipherText, 1); 
+  document.getElementById("filter-uppercase").value = removeCharRange(cipherText, "uppercase");
+  document.getElementById("filter-lowercase").value = removeCharRange(cipherText, "lowercase");
+  document.getElementById("filter-numbers").value = removeCharRange(cipherText, "numbers");
 }
 /**
  * Converts the input text to its reverse.
@@ -26,7 +30,7 @@ function extractAlternatingChars(text, parity) {
 
   var i = 0;
   var outputtext = "";
-  if (parity==1 | parity==0) {
+  if (parity==1 || parity==0) {
     i = parity;
   } else {
     return "WTF is this? Wrong args!!";
@@ -36,6 +40,42 @@ function extractAlternatingChars(text, parity) {
   }
   return outputtext;
 
+}
+
+/**
+ * Removes a range of characters from input text
+ * @param {string} text - text to be extracted from.
+ * @param {integer} range - shift for for the character range to be removed. valid values are "uppercase", "lowercase", and "numbers".
+ * @return {string} - returns extracted text.
+ * @author - Cyan
+ */
+function removeCharRange(text, range) {
+  var outputtext = "";
+
+  function createOutput(cipherText, minLimit, maxLimit) {
+    for (i = 0; i < cipherText.length; i++) {
+      character = text.charCodeAt(i);
+      if (character < minLimit || character > maxLimit) {
+        outputtext = outputtext + cipherText.charAt(i);
+      } 
+    }
+  }
+
+  switch (range) {
+    case "uppercase": 
+      createOutput(text, 65, 90) //remove uppercase characters
+      break;
+    case "lowercase": 
+      createOutput(text, 97, 122) //remove lowercase characters
+      break;
+    case "numbers": 
+      createOutput(text, 48, 57) //remove number characters (0-9)
+      break;
+    default: 
+      outputtext = "This shit is not implemented yet!";
+  }
+
+  return outputtext;
 }
 /**
  * Converts the input text in to an atbash cipher using an alphabet [a-z] and [A-Z].
