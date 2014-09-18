@@ -46,22 +46,22 @@
 			</form>
     	</div>
     </div>
-    <div class="row">
-    	<div class="col-md-4">
-    		<p id="output"></span>
-    	</div>
+    <div class="container-fluid" id="results">
+
     </div>
   </div>
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.caret.1.02.js"></script>
+  <script src="js/akrt.js"></script>
   <script type="text/javascript">
 	(function($){
 		$("#replaceButton").click(function(){
+      var ciphertext = $("#cipherText").text();
 			$("input:text#cipherText").keyup(function(){
-				$("p#output").text($(this).caret().text);
+			   replaceCipher(ciphertext, $(this).caret().start(), $(this).caret().end());
 			}).mouseup(function(){
-				$("p#output").text($(this).caret().text);
+				replaceCipher(ciphertext, $(this).caret().start(), $(this).caret().end());
 			});
 		});
 	})(jQuery);
