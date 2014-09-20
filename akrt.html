@@ -55,7 +55,11 @@
   <script src="js/jquery.caret.1.02.js"></script>
   <script src="js/akrt.js"></script>
   <script type="text/javascript">
-	(function($){
+    $("#replaceButton").click(function() {
+      var ciphertext = $("#cipherText").text();
+      replaceCipher(cipherText, $("#cipherText").caret().start(), $("#cipherText").caret().end());
+    });
+	/*(function($){
 		$("#replaceButton").click(function(){
       var ciphertext = $("#cipherText").text();
 			$("input:text#cipherText").keyup(function(){
@@ -64,7 +68,7 @@
 				replaceCipher(ciphertext, $(this).caret().start(), $(this).caret().end());
 			});
 		});
-	})(jQuery);
+	})(jQuery);*/
   </script>
 </body>
 </html>
