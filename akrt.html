@@ -40,14 +40,13 @@
 	    	<form>
 			    <div class="form-group">
 			        <label for="cipherText">Cipher</label>
-			        <input type="text" class="form-control" id="cipherText" placeholder="Cipher Text Here">
+			        <input type="text" class="form-control cipherText" id="cipherText" placeholder="Cipher Text Here">
 			    </div>
 			    <div class="btn btn-primary" id="replaceButton">Replace!</div>
 			</form>
     	</div>
     </div>
     <div class="container-fluid" id="results">
-
     </div>
   </div>
   <script src="http://code.jquery.com/jquery.js"></script>
@@ -55,20 +54,19 @@
   <script src="js/jquery.caret.1.02.js"></script>
   <script src="js/akrt.js"></script>
   <script type="text/javascript">
-    $("#replaceButton").click(function() {
-      var ciphertext = $("#cipherText").text();
-      replaceCipher(cipherText, $("#cipherText").caret().start(), $("#cipherText").caret().end());
-    });
-	/*(function($){
-		$("#replaceButton").click(function(){
-      var ciphertext = $("#cipherText").text();
-			$("input:text#cipherText").keyup(function(){
-			   replaceCipher(ciphertext, $(this).caret().start(), $(this).caret().end());
-			}).mouseup(function(){
-				replaceCipher(ciphertext, $(this).caret().start(), $(this).caret().end());
-			});
-		});
-	})(jQuery);*/
+    (function($){
+      $("document").ready(function(){
+        $("#replaceButton").click(function(){
+          var cipherText = $("#cipherText").text();
+          var start = $("input:text.cipherText").caret().start;
+
+          var end =$("input:text.cipherText").caret().end;
+          
+
+          replaceCipher(cipherText, start, end);
+        });
+      });
+    })(jQuery);
   </script>
 </body>
 </html>
