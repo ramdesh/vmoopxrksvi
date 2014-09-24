@@ -53,6 +53,7 @@
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.caret.1.02.js"></script>
+  <script src="js/keywords.js"></script>
   <script type="text/javascript">
     (function($){
       $("document").ready(function(){
@@ -65,21 +66,12 @@
 
           var prefix = ciphertext.substring(0,start);
           var suffix = ciphertext.substring(end);
-
-          $.ajaxSetup({beforeSend: function(xhr){
-              if (xhr.overrideMimeType)
-              {
-                xhr.overrideMimeType("application/json");
-              }
-            }
-          });
-
-          $.getJSON("json/keywords.json", function(json) {
-            $.each(json.keywords, function(i, keyword) {
-              outstring = '<div class="col-md-4"><p>'  
-                      + keyword + " : " + prefix + keyword + suffix + '</p></div>';
-              if ((i % 3) == 0) {
-                $("#results").append('<div class="row">');
+	  $(".results").remove();
+	  for (i=0;i<keywords.length;i++){
+	      keyword = keywords[i];
+	      outstring = '<div class="col-md-4 results"><p>' + keyword + " : " + prefix + keyword + suffix + '</p></div>';
+	      if ((i % 3) == 0) {
+                $("#results").append('<div class="row results">');
                 $("#results").append(outstring);
               } else if ((i % 3) == 2) {
                 $("#results").append(outstring);
@@ -87,9 +79,7 @@
               } else {
                 $("#results").append(outstring);
               }
-            });
-            
-          });
+	  } 
         });
       });
     })(jQuery);
