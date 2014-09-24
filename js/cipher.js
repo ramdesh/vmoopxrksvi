@@ -1,4 +1,4 @@
-function changeCipher() {
+function changeCipherBasic() {
   var cipherText = document.getElementById("ciphertext").value;
   document.getElementById("reverse").value = reverse(cipherText);
   document.getElementById("atbash").value = atbash(cipherText); 
