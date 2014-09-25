@@ -14,9 +14,7 @@ function changeCipherBasic() {
  * @return {string} returns the reversed string.
  */
 function reverse(text) {
-
   return reversedString = text.split("").reverse().join("");
-
 }
 /**
  * Extracts even/odd characters from input text
@@ -26,7 +24,6 @@ function reverse(text) {
  * @author - Cyan
  */
 function extractAlternatingChars(text, parity) {
-
   var i = 0;
   var outputtext = "";
   if (parity==1 || parity==0) {
@@ -38,7 +35,6 @@ function extractAlternatingChars(text, parity) {
     outputtext = outputtext + text.charAt(i);
   }
   return outputtext;
-
 }
 
 /**
@@ -131,15 +127,15 @@ function caesar(text, n, flag) {
   return outputtext;
 }
 
+/**
+ * Converts the input text using a columnar transposition.
+ * <b>Important note:</b> For the purpose of Ingress, use flag = 0 always.
+ * @param {string} text - text to be encrypted/decrypted.
+ * @param {integer} n - number of columns.
+ * @param {integer} flag - 0: top-bottom LR 1: top-bottom RL 2:bottom-top LR 3:bottom-top RL
+ * @return {string} - returns columnar encrypted/decrypted text.
+ */
 function columnar_transposition(text, n, flag) {
-  /**
-   * Converts the input text using a columnar transposition.
-   * <b>Important note:</b> For the purpose of Ingress, use flag = 0 always.
-   * @param {string} text - text to be encrypted/decrypted.
-   * @param {integer} n - number of columns.
-   * @param {integer} flag - 0: top-bottom LR 1: top-bottom RL 2:bottom-top LR 3:bottom-top RL
-   * @return {string} - returns columnar encrypted/decrypted text.
-   */
   var character = "";
   var outputchar = "";
   var outputtext = "";
@@ -214,4 +210,37 @@ function columnar_transposition(text, n, flag) {
 	  }
 	  return outputtext;
   }
+}
+
+/**
+ * Converts the input text into their Ascii values
+ * @param {string} text - text to be encrypted/decrypted.
+ * @param {integer} flag - 0: number to letter 1: letter to number 2: Ascii to characters 3: char to Ascii
+ *                         4: hex to char 5: char to hex
+ * @return {string} - returns the converted text.
+ * @todo - The ASCII conversion assumes that it will be all doublets. I can't think of a better alternative.
+ * @author - KJ <kulendra@gmail.com>
+ */
+function numText(text,flag){
+  var character="";
+  var output="";
+  var i=0;
+  for(i=0;i<text.length;i++){
+  	if(flag==0){
+  		output = output + String.fromCharCode(97+text.charAt(i));	
+  	}
+  	else if(flag==1){
+  		text = text.toLowerCase();
+  		output = output + (text.charCodeAt(i) - 97);
+  	}
+  	else if(flag==2){
+  		// Assumes that the characters will be in lower case range
+  		output = output + String.fromCharCode(text.charAt(i)*10+text.charAt(i+1));
+  		i++;
+  	}
+  	else if(flag==3){
+  		output = output + text.charCodeAt(i);
+  	}
+  }
+  return output;
 }
