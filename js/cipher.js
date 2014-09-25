@@ -124,7 +124,7 @@ function caesar(text, n, flag) {
     } else if (character >= 97 && character <= 122) {
       outputchar = String.fromCharCode(97 + ((character + n) % 122));
     } else {
-      outputchar = fromCharCode(character);
+      outputchar = String.fromCharCode(character);
     }
     outputtext = outputtext + outputchar;
   }
@@ -137,7 +137,7 @@ function columnar_transposition(text, n, flag) {
    * <b>Important note:</b> For the purpose of Ingress, use flag = 0 always.
    * @param {string} text - text to be encrypted/decrypted.
    * @param {integer} n - number of columns.
-   * @param {integer} flag - 0: for encrypt 1: for decrypt
+   * @param {integer} flag - 0: top-bottom LR 1: top-bottom RL 2:bottom-top LR 3:bottom-top RL
    * @return {string} - returns columnar encrypted/decrypted text.
    */
   var character = "";
@@ -146,26 +146,72 @@ function columnar_transposition(text, n, flag) {
 
   var i = 0;
   var j = i;
-  var breakValue = 0;
-  var m;
-
-  if (flag = 0) {
-    m = n;
+  var maxrow = Math.ceil(text.length/n);
+  var maxcol = n;
+  
+  // read columnwise left-right
+  if(flag == 0){
+	  for(j=0;j<maxcol;j++){
+	  	for(i=0;i<maxrow;i++){
+			outputchar = text.charAt(i*n+j);
+			outputtext = outputtext+outputchar;
+		}
+	  }
+	  return outputtext;
   }
-  if (flag = 1) {
-    m = Math.ceil(text.length / n);
+  
+  //read columnwise right-left
+  if (flag == 1){
+	  for(j=maxcol-1;j>=0;j--){
+	  	for(i=0;i<maxrow;i++){
+			outputchar = text.charAt(i*n+j);
+			outputtext = outputtext+outputchar;
+		}
+	  }
+	  return outputtext;
   }
-  while (breakValue = 0) {
-    outputchar = text.charAt(j);
-    outputtext = outputtext + outputchar;
 
-    j = j + m;
-    if (j >= text.length) {
-      i = i + 1;
-      j = i;
-    }
-    if (j >= i + m) {
-      breakValue = 1;
-    }
+  //read columnwise bottom-top left-right
+  if (flag == 2){
+	  for(j=0;j<maxcol;j++){
+	  	for(i=maxrow-1;i>=0;i--){
+			outputchar = text.charAt(i*n+j);
+			outputtext = outputtext+outputchar;
+		}
+	  }
+	  return outputtext;
+  }
+  
+  //read columnwise bottom-up right-left
+  if (flag == 3){
+	  for(j=maxcol-1;j>=0;j--){
+	  	for(i=maxrow-1;i>=0;i--){
+			outputchar = text.charAt(i*n+j);
+			outputtext = outputtext+outputchar;
+		}
+	  }
+	  return outputtext;
+  }
+  
+  //read rowwise right-left
+  if (flag == 4){
+	  for(i=0;i<maxrow;i++){
+	  	for(j=maxcol-1;j>=0;j--){
+			outputchar = text.charAt(i*n+j);
+			outputtext = outputtext+outputchar;
+		}
+	  }
+	  return outputtext;
+  }
+  
+  //read rowwise bottom-up right-left
+  if (flag == 5){
+	  for(i=maxrow-1;i>=0;i--){
+	  	for(j=maxcol-1;j>=0;j--){
+			outputchar = text.charAt(i*n+j);
+			outputtext = outputtext+outputchar;
+		}
+	  }
+	  return outputtext;
   }
 }
