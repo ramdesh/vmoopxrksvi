@@ -39,19 +39,46 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading">Columnar</div>
           <div class="panel-body">
-            <textarea class="form-control" rows="2" id="ceasar-text"></textarea>
-          </div>
+            <div class="row">
+                <div class="col-md-6">
+                  <label for="columnarCipherText">Cipher Text</label>
+                  <input type="text" class="form-control" id="columnarCipherText" />
+                </div>
+                <div class="col-md-4">
+                  <label for="columnCount">No. of Columns</label>
+                  <input type="text" class="form-control" id="columnCount" />
+                </div>
+              </div>
+
+             <div class="row">
+               <div class="col-md-6">
+                 <label for="columnarFlag">Direction</label>
+                 <select class="form-control">
+                   <option value="0">Top-Bottom Left-To-Right</option>
+                   <option value="1">Top-Bottom Right-To-Left</option>
+                   <option value="2">Bottom-Top Left-To-Right</option>
+                   <option value="3">Bottom-Top Right-To-Left</option>
+                 </select>
+               </div>
+               <div class="col-md-4">
+                 <label for="columnarButton">.</label>
+                 <div id="columnarButton" class="form-control btn btn-success">Do Columnar</div>
+               </div>
+             </div>
+           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">Columns</div>
-          <div class="panel-body">
-            <textarea class="form-control" rows="2" id="ceasar-shift"></textarea>
+
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">Columnar Result</div>
+            <div class="panel-body">
+              <textarea class="form-control" rows="2" id="columnarResult"></textarea>
+            </div>
           </div>
         </div>
       </div>
