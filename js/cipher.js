@@ -189,7 +189,7 @@ function columnar_transposition(text, n, flag) {
 	  return outputtext;
   }
   
-  //read rowwise right-left
+  //read rowwise right-left top-bottom
   if (flag == 4){
 	  for(i=0;i<maxrow;i++){
 	  	for(j=maxcol-1;j>=0;j--){
@@ -200,10 +200,31 @@ function columnar_transposition(text, n, flag) {
 	  return outputtext;
   }
   
-  //read rowwise bottom-up right-left
+  //read rowwise right-left bottom-up
   if (flag == 5){
 	  for(i=maxrow-1;i>=0;i--){
 	  	for(j=maxcol-1;j>=0;j--){
+			outputchar = text.charAt(i*n+j);
+			outputtext = outputtext+outputchar;
+		}
+	  }
+	  return outputtext;
+  }
+  
+  //read rowwise left-right top-bottom
+  if(flag==6){
+	  for(i=0;i<maxrow;i++){
+	  	for(j=0;j<maxcol;j++){
+			outputchar = text.charAt(i*n+j);
+			outputtext = outputtext+outputchar;
+		}
+	  }
+	  return outputtext;
+  }
+  //read rowwise left-right bottom-top
+  if(flag==7){
+	  for(i=maxrow-1;i>=0;i--){
+	  	for(j=0;j<maxcol;j++){
 			outputchar = text.charAt(i*n+j);
 			outputtext = outputtext+outputchar;
 		}
@@ -227,33 +248,53 @@ function numText(text,flag){
   var i=0;
   for(i=0;i<text.length;i++){
   	if(flag==0){
-  		output = output + String.fromCharCode(97+text.charAt(i));	
+		// 0->a
+		if(!isNaN(parseInt(text.charAt(i)))){
+			output = output + String.fromCharCode(97+parseInt(text.charAt(i)));		
+		}
+		else{
+			output = output + text.charAt(i);
+		}
+  		
   	}
   	else if(flag==1){
+		// a->0
   		text = text.toLowerCase();
-  		output = output + (text.charCodeAt(i) - 97);
+		if(isNaN(parseInt(text.charAt(i)))){
+			output = output + (parseInt(text.charCodeAt(i)) - 97);	
+		}
+		else{
+			output = output + text.charAt(i);
+		}
+  		
   	}
   	else if(flag==2){
-  		// Assumes that the characters will be in lower case range
+		// ASC -> A
+  		// Assumes that the characters will be in lower case range and a two character code.
   		output = output + String.fromCharCode(text.charAt(i)+text.charAt(i+1));
   		i++;
   	}
   	else if(flag==3){
+		// A->ASC
   		output = output + text.charCodeAt(i);
   	}
   	else if(flag==4){
+		// Hex->A
   		character = text.charAt(i)+text.charAt(i+1);
   		output = output + String.fromCharCode(parseInt(character,16));
   		i++;
   	}
   	else if(flag==5){
+		// A->Hex
   		output = output + text.charCodeAt(i).toString(16);
   	}
   }
   if(flag==6){
+  	// B64->A
   	output = atob(text);
   }
   else if(flag==7){
+  	// A->B64
   	output = btoa(text);
   }
 
