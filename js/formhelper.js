@@ -1,3 +1,10 @@
+function copyVals(){
+	var text = $("#inputText").val();
+	$("#outputText").val(text.trim());
+	$("#outputText").removeClass("btn-success btn-warning");
+	$(".multioutput").removeClass("btn-success btn-warning");
+}
+
 function clickToCopy(text){
 	$("#outputText").val(text);
 	$("#outputText").removeClass("btn-success btn-warning");
