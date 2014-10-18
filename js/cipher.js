@@ -300,3 +300,25 @@ function numText(text,flag){
 
   return output;
 }
+
+/**
+ * Converts the case of the text. Leaves non alphabetic characters as it is.
+ * @param {string} text - text to be converted.
+ * @return {string} - returns the converted text.
+ * @author - KJ <kulendra@gmail.com>
+ */
+function caseSwitch(text){
+	var output = "";
+	for(i=0;i<text.length;i++){
+		c = text.CharAt(i);
+		if(c==c.toUpperCase()){
+			output = output+c.toLowerCase();
+		}
+		else if(c==c.toLowerCase()){
+			output = output+c.toUpperCase();
+		}
+		else{
+			output = output + c;
+		}
+	}
+}
