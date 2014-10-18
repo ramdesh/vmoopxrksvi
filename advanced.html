@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ENL LK Cipher Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.css" rel="stylesheet" media="screen" />
+  <link href="css/bootstrap-theme.css" rel="stylesheet" media="screen" />
+  <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/keywords.js"></script>
+  <script src="js/analyze.js"></script>
+  <script src="js/cipher.js"></script>
+  <script src="js/formhelper.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+	$(document).ready(function () {
+		$("#inputText").keyup(function(){
+			copyVals();
+			//formValidate();
+			text = $("#outputText").val();
+			formValidate($("#outputText"),text);
+			$("#charactercount").html(textLength(text));
+			$("#factors").html(factors(text).join());
+			$("#numbers").html(countNumbers(text,1));
+			doAll();
+		});
+	});
+	</script>
+     <div class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://enlightenedlk.com">ENL LK Cipher Tool</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html">Basic</a></li>
+              <li><a href="advanced.html">Advanced</a></li>
+              <li><a href="akrt.html">AKRT</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div>	
+	  <div class="col-md-4">
+		<div id="scratchpad">
+			<label for="scratchpad">Scratch Pad</label>
+			<textarea class="form-control" id="scratchText" rows=6 style="font-family:courier"></textarea>
+		</div>
+		<div id="textmatrices">
+		</div>
+		<h4>History</h4>
+	</div>
+	<div class="col-md-4">
+		<div id="form">
+			<form>
+				<div class="form-group">
+					<label for="originalText">Input</label>
+			    	<input type="text" class="form-control" id="inputText" placeholder="Cipher Text Here"> 
+					<button type="button" class="btn btn-success" onclick="copyVals();">Copy</button></br>
+					<label for="cipherText">Output</label>
+					<textarea class="form-control" id="outputText"></textarea>
+				</div>
+				<div class="form-group">	
+					<button type="button" class="btn btn-info" onclick="formReverse()">Reverse</button>
+					<button type="button" class="btn btn-info" onclick="formAtbash()">Atbash</button>			
+					<button type="button" class="btn btn-info" onclick="formOddEven()">Odd-Even</button>
+					<button type="button" class="btn btn-info" onclick="formCaseSwitch()">A->a/a->A</button>
+					<button type="button" class="btn btn-info" onclick="doAll()">Do All</button>
+				</div>
+				<div class="form-group">	
+					<button type="button" class="btn btn-info" onclick="formLettersNum(0)">0->A</button>
+					<button type="button" class="btn btn-info" onclick="formLettersNum(1)">A->0</button>			
+					<button type="button" class="btn btn-info" onclick="formLettersNum(2)">ASC->A</button>
+					<button type="button" class="btn btn-info" onclick="formLettersNum(3)">A->ASC</button>
+					<button type="button" class="btn btn-info" onclick="formLettersNum(4)">Hex->A</button>
+					<button type="button" class="btn btn-info" onclick="formLettersNum(5)">A->Hex</button>
+					<button type="button" class="btn btn-info" onclick="formLettersNum(6)">B64->A</button>
+					<button type="button" class="btn btn-info" onclick="formLettersNum(7)">A->B64</button>
+				</div>
+				<div class="form-group">
+					<button type="button" class="btn btn-info" onclick="formRotN()">Rot-N</button>
+					<button type="button" class="btn btn-info" onclick="formColumnar()">Columnar</button>
+				</div>
+				<div class="form-group">
+					<button type="button" class="btn btn-info" onclick="formGroup(2)">Group 2</button>
+					<button type="button" class="btn btn-info" onclick="formGroup(3)">Group 3</button>
+				</div>
+			</form>
+		</div>
+		<div class="clearfix spacer"></div>
+		<div id="results" class="clearfix"></div>
+		<h4>Statistics</h4>
+		<pre>
+			<div style="float:left">Character count:</div><div style="float:left;clear:right" id="charactercount"></div>
+			<div style="float:left">Factors:</div><div style="float:left;clear:right" id="factors"></div>
+			<div style="float:left">Numbers:</div><div style="float:left;clear:right" id="numbers"></div>
+		</pre>
+    </div>
+	<div class="col-md-4" id="multioutput">
+		<h4>Multi output</h4>	
+	</div>
+	
+
+</body>
+</html>
