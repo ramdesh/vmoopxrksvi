@@ -152,5 +152,13 @@ function validate(text,keywords){
 	if(text.match(p4)){
 		output.push(["p4","pattern"]);
 	}
+
+	// check words
+	numbers = ["one","two","three","four","five","six","seven","eight","nine","zero"];
+	p1 = "^.*("+numbers.join("|")+").*$";
+	if(text.match(p1)){
+		output.push(["numbers","partial"]);
+	}
+
 	return output;
 }
