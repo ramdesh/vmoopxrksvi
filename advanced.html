@@ -22,7 +22,7 @@
 			//formValidate();
 			text = $("#outputText").val();
 			formValidate($("#outputText"),text);
-			$("#charactercount").html(textLength(text));
+			$("#charactercount").html(text.length);
 			$("#factors").html(factors(text).join());
 			$("#numbers").html(countNumbers(text,1));
 			doAll();
