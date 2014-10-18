@@ -20,8 +20,11 @@ function formValidate(obj,text){
 		if(ret[0][1]=="full"){
 			classstring="btn-success";
 		}
-		else{
+		else if(ret[0][1]=="pattern"){
 			classstring="btn-warning";
+		}
+		else if(ret[0][1]=="partial"){
+			classstring="btn-info";
 		}
 	}
 	else{
