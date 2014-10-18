@@ -1,3 +1,33 @@
+function doAll(){
+	var text = $("#inputText").val();
+	var output="";
+	$(".multioutput").remove();
+	
+	//reverse()
+	output = reverse(text);
+	$("#multioutput").append("<div class=\"multioutput\" id=\"reverse\"><h5><b>Reverse</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
+	
+	//atbash()
+	output = atbash(text);
+	$("#multioutput").append("<div class=\"multioutput\" id=\"atbash\"><h5><b>Atbash</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
+	
+	//odd-even()
+	output = extractAlternatingChars(text,0);
+	$("#multioutput").append("<div class=\"multioutput\" id=\"odd\"><h5><b>Odd</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
+	output = extractAlternatingChars(text,1);
+	$("#multioutput").append("<div class=\"multioutput\" id=\"even\"><h5><b>Even</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
+	
+	//caseSwitch()
+	output = caseSwitch(text);
+	$("#multioutput").append("<div class=\"multioutput\" id=\"caseSwitch\"><h5><b>Case Switch</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
+	
+}
+
 function copyVals(){
 	var text = $("#inputText").val();
 	$("#outputText").val(text.trim());
@@ -79,6 +109,7 @@ function formRotN(){
 		ret = caesar(text,i,0);
 		$("#multioutput").append("<div class=\"multioutput\" >"+ret+" rot:"+i+"</div>");
 		$("#multioutput .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+		$("#multioutput .multioutput:last-child").addClass(formValidate("",ret));
 	}
 	formValidate();
 }
