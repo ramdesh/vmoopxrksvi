@@ -25,6 +25,26 @@ function countNumbers(text,flag){
 }
 
 /**
+ * Counts the number of text in the text. 
+ * @param {string} text - text to be analysed.
+ * @return {string array} - returns an array with characters and number of appearences.
+ * @author - KJ <kulendra@gmail.com>
+ */
+function countLetters(text,flag){
+	var i=0;
+	var j=0;
+	ret = [];
+	text = text.toLowerCase();
+	for (i=0;i<text.length;i++){
+		c = text.charCodeAt(i);
+		if(c>=97 && c<=122){
+			ret[string.fromCharCode(c)] = ret[string.fromCharCode(c)]+1;	
+		}
+	}
+	return ret;
+}
+
+/**
  * Computes factors of a given text length. Used for columnar transpositions. 
  * @param {string} text - text to be analysed.
  * @return {integer array} - returns integer factors as an array.
