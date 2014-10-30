@@ -172,13 +172,33 @@ function validate(text,keywords){
 	if(text.match(p4)){
 		output.push(["p4","pattern"]);
 	}
-
+	if(output.length>0){
+		return output;	
+	}
+	
+	// check keywords
+	var i = text.length;
+	if (i-10>0){
+		var p1= "[".text."]{".i-10."}";	
+	}
+	if (i-9>0){
+		var p2 = "[".text."]{".i-9."}";
+	}
+        if(text.match(p1)){
+        	output.push(["keyword","pattern"]);
+        }
+        if(text.match(p2)){
+        	output.push(["keyword","pattern"]);
+        }
+	if(output.length>0){
+		return output;	
+	}
+	
 	// check words
-	numbers = ["one","two","three","four","five","six","seven","eight","nine","zero"];
+	numbers = ["two","three","four","five","six","seven","eight","nine","tw","th","fo","fi","si","se","ei","ni"];
 	p1 = "^.*("+numbers.join("|")+").*$";
 	if(text.match(p1)){
 		output.push(["numbers","partial"]);
 	}
-
 	return output;
 }
