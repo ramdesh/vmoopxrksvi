@@ -114,7 +114,7 @@ function formRotN(){
 	formValidate();
 }
 
-function formColumnar(){
+function formColumnar(type){
 	var text = $("#outputText").val();
 	var fac = factors(text);
 	$(".multioutput").remove();
@@ -129,49 +129,49 @@ function formColumnar(){
 	$("#multioutput").append("<div class=\"multioutput\" id=\"column7\"><h5><b>Left to Right: Bottom to Top</b></h5></div>");
 
 	for(i=0;i<fac.length;i++){
-		ret = columnar_transposition(text,fac[i],0);
+		ret = columnar_transposition(text,fac[i],0,type);
 		$("#multioutput #column0").append("<div class=\"multioutput\">"+ret+" (columns:"+fac[i]+")</div>");
 		$("#multioutput #column0 .multioutput:last-child").addClass(formValidate("",ret));
 		$("#multioutput #column0 .multioutput:last-child").attr("value",ret);
 		$("#multioutput #column0 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
 
-		ret = columnar_transposition(text,fac[i],1);
+		ret = columnar_transposition(text,fac[i],1,type);
 		$("#multioutput #column1").append("<div class=\"multioutput\">"+ret+"(columns:"+fac[i]+")</div>");
 		$("#multioutput #column1 .multioutput:last-child").addClass(formValidate("",ret));
 		$("#multioutput #column1 .multioutput:last-child").attr("value",ret);
 		$("#multioutput #column1 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
 
-		ret = columnar_transposition(text,fac[i],2);
+		ret = columnar_transposition(text,fac[i],2,type);
 		$("#multioutput #column2").append("<div class=\"multioutput\">"+ret+"(columns:"+fac[i]+")</div>");
 		$("#multioutput #column2 .multioutput:last-child").addClass(formValidate("",ret));
 		$("#multioutput #column2 .multioutput:last-child").attr("value",ret);
 		$("#multioutput #column2 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
 		
-		ret = columnar_transposition(text,fac[i],3);
+		ret = columnar_transposition(text,fac[i],3,type);
 		$("#multioutput #column3").append("<div class=\"multioutput\">"+ret+"(columns:"+fac[i]+")</div>");
 		$("#multioutput #column3 .multioutput:last-child").addClass(formValidate("",ret));
 		$("#multioutput #column3 .multioutput:last-child").attr("value",ret);
 		$("#multioutput #column3 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
 		
-		ret = columnar_transposition(text,fac[i],4);
+		ret = columnar_transposition(text,fac[i],4,type);
 		$("#multioutput #column4").append("<div class=\"multioutput\">"+ret+"(columns:"+fac[i]+")</div>");
 		$("#multioutput #column4 .multioutput:last-child").addClass(formValidate("",ret));
 		$("#multioutput #column4 .multioutput:last-child").attr("value",ret);
 		$("#multioutput #column4 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
 		
-		ret = columnar_transposition(text,fac[i],5);
+		ret = columnar_transposition(text,fac[i],5,type);
 		$("#multioutput #column5").append("<div class=\"multioutput\">"+ret+"(columns:"+fac[i]+")</div>");
 		$("#multioutput #column5 .multioutput:last-child").addClass(formValidate("",ret));
 		$("#multioutput #column5 .multioutput:last-child").attr("value",ret);
 		$("#multioutput #column5 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
 		
-		ret = columnar_transposition(text,fac[i],6);
+		ret = columnar_transposition(text,fac[i],6,type);
 		$("#multioutput #column6").append("<div class=\"multioutput\">"+ret+"(columns:"+fac[i]+")</div>");
 		$("#multioutput #column6 .multioutput:last-child").addClass(formValidate("",ret));
 		$("#multioutput #column6 .multioutput:last-child").attr("value",ret);
 		$("#multioutput #column6 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
 		
-		ret = columnar_transposition(text,fac[i],7);
+		ret = columnar_transposition(text,fac[i],7,type);
 		$("#multioutput #column7").append("<div class=\"multioutput\">"+ret+"(columns:"+fac[i]+")</div>");
 		$("#multioutput #column7 .multioutput:last-child").addClass(formValidate("",ret));
 		$("#multioutput #column7 .multioutput:last-child").attr("value",ret);
