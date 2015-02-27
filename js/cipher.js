@@ -129,16 +129,19 @@ function caesar(text, n, flag) {
 
 /**
  * Converts the input text using a columnar transposition.
- * <b>Important note:</b> For the purpose of Ingress, use flag = 0 always.
  * @param {string} text - text to be encrypted/decrypted.
  * @param {integer} n - number of columns.
  * @param {integer} flag - 0: top-bottom LR 1: top-bottom RL 2:bottom-top LR 3:bottom-top RL
+ * @param {integer} type - 1: snake algorithm 0/ommitted/null: regular 
  * @return {string} - returns columnar encrypted/decrypted text.
+ * @author - KJ <kulendra@gmail.com>
  */
-function columnar_transposition(text, n, flag) {
+function columnar_transposition(text, n, flag, type) {
   var character = "";
   var outputchar = "";
   var outputtext = "";
+  var rowtext = "";
+  var dir = 1;
 
   var i = 0;
   var j = i;
@@ -148,10 +151,16 @@ function columnar_transposition(text, n, flag) {
   // read columnwise left-right
   if(flag == 0){
 	  for(j=0;j<maxcol;j++){
+	  	rowtext = "";
 	  	for(i=0;i<maxrow;i++){
 			outputchar = text.charAt(i*n+j);
-			outputtext = outputtext+outputchar;
+			rowtext = rowtext+outputchar;
 		}
+		if(dir == -1 && type==1){
+			rowtext = reverse(rowtext);
+		}
+		dir=dir*(-1);
+		outputtext = outputtext+rowtext;
 	  }
 	  return outputtext;
   }
@@ -159,10 +168,16 @@ function columnar_transposition(text, n, flag) {
   //read columnwise right-left
   if (flag == 1){
 	  for(j=maxcol-1;j>=0;j--){
+	  	rowtext="";
 	  	for(i=0;i<maxrow;i++){
 			outputchar = text.charAt(i*n+j);
-			outputtext = outputtext+outputchar;
+			rowtext = rowtext+outputchar;
 		}
+		if(dir == -1 && type==1){
+			rowtext = reverse(rowtext);
+		}
+		dir=dir*(-1);
+		outputtext = outputtext+rowtext;
 	  }
 	  return outputtext;
   }
@@ -170,10 +185,16 @@ function columnar_transposition(text, n, flag) {
   //read columnwise bottom-top left-right
   if (flag == 2){
 	  for(j=0;j<maxcol;j++){
+	  	rowtext="";
 	  	for(i=maxrow-1;i>=0;i--){
 			outputchar = text.charAt(i*n+j);
-			outputtext = outputtext+outputchar;
+			rowtext = rowtext+outputchar;
 		}
+		if(dir == -1 && type==1){
+			rowtext = reverse(rowtext);
+		}
+		dir=dir*(-1);
+		outputtext = outputtext+rowtext;
 	  }
 	  return outputtext;
   }
@@ -181,10 +202,16 @@ function columnar_transposition(text, n, flag) {
   //read columnwise bottom-up right-left
   if (flag == 3){
 	  for(j=maxcol-1;j>=0;j--){
+	  	rowtext="";
 	  	for(i=maxrow-1;i>=0;i--){
 			outputchar = text.charAt(i*n+j);
-			outputtext = outputtext+outputchar;
+			rowtext = rowtext+outputchar;
 		}
+		if(dir == -1 && type==1){
+			rowtext = reverse(rowtext);
+		}
+		dir=dir*(-1);
+		outputtext = outputtext+rowtext;
 	  }
 	  return outputtext;
   }
@@ -192,10 +219,16 @@ function columnar_transposition(text, n, flag) {
   //read rowwise right-left top-bottom
   if (flag == 4){
 	  for(i=0;i<maxrow;i++){
+	  	rowtext="";
 	  	for(j=maxcol-1;j>=0;j--){
 			outputchar = text.charAt(i*n+j);
-			outputtext = outputtext+outputchar;
+			rowtext = rowtext+outputchar;
 		}
+		if(dir == -1 && type==1){
+			rowtext = reverse(rowtext);
+		}
+		dir=dir*(-1);
+		outputtext = outputtext+rowtext;
 	  }
 	  return outputtext;
   }
@@ -203,10 +236,16 @@ function columnar_transposition(text, n, flag) {
   //read rowwise right-left bottom-up
   if (flag == 5){
 	  for(i=maxrow-1;i>=0;i--){
+	  	rowtext="";
 	  	for(j=maxcol-1;j>=0;j--){
 			outputchar = text.charAt(i*n+j);
-			outputtext = outputtext+outputchar;
+			rowtext = rowtext+outputchar;
 		}
+		if(dir == -1 && type==1){
+			rowtext = reverse(rowtext);
+		}
+		dir=dir*(-1);
+		outputtext = outputtext+rowtext;
 	  }
 	  return outputtext;
   }
@@ -214,20 +253,32 @@ function columnar_transposition(text, n, flag) {
   //read rowwise left-right top-bottom
   if(flag==6){
 	  for(i=0;i<maxrow;i++){
+		rowtext="";
 	  	for(j=0;j<maxcol;j++){
 			outputchar = text.charAt(i*n+j);
-			outputtext = outputtext+outputchar;
+			rowtext = rowtext+outputchar;
 		}
+		if(dir == -1 && type==1){
+			rowtext = reverse(rowtext);
+		}
+		dir=dir*(-1);
+		outputtext = outputtext+rowtext;
 	  }
 	  return outputtext;
   }
   //read rowwise left-right bottom-top
   if(flag==7){
 	  for(i=maxrow-1;i>=0;i--){
+	  	rowtext="";
 	  	for(j=0;j<maxcol;j++){
 			outputchar = text.charAt(i*n+j);
-			outputtext = outputtext+outputchar;
+			rowtext = rowtext+outputchar;
 		}
+		if(dir == -1 && type==1){
+			rowtext = reverse(rowtext);
+		}
+		dir=dir*(-1);
+		outputtext = outputtext+rowtext;
 	  }
 	  return outputtext;
   }
