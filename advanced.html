@@ -25,6 +25,12 @@
 			$("#charactercount").html(text.length);
 			$("#factors").html(factors(text).join());
 			$("#numbers").html(countNumbers(text,1));
+			$("#analytics").html("");
+			validate_result = validate(text,keywords);
+			for(i=0;i<output.length;i++){
+				analytics_text = $("#analytics").html();
+				$("#analytics").html(analytics_text+validate_result[i]);
+			}
 			doAll();
 		});
 	});
