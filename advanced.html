@@ -27,7 +27,7 @@
 			$("#numbers").html(countNumbers(text,1));
 			$("#analytics").html("");
 			validate_result = validate(text,keywords);
-			for(i=0;i<output.length;i++){
+			for(i=0;i<validate_result.length;i++){
 				analytics_text = $("#analytics").html();
 				$("#analytics").html(analytics_text+validate_result[i]);
 			}
