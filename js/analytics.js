@@ -137,7 +137,8 @@ function validate(text,keywords){
 	var p2="^[2-9][a-z][a-z][a-z][2-9]("+keywords.join("|")+")[a-z][2-9][a-z][2-9][a-z]$";
 	var p3="^[2-9][p-z][a-h][2-9]("+keywords.join("|")+")[p-z][2-9][p-z][2-9][p-z]$";
 	var p4="^[2-9][a-z][a-z][2-9]("+keywords.join("|")+")[a-z][2-9][2-9][2-9][a-z]$";
-	var p5="^[a-z]{8}[2-9]("+keywords.join("|"+")[2-9]$");
+	var p5="^[a-z]{8}[2-9]("+keywords.join("|")+")[2-9]$";
+	var p6="^("+keywords.join("|")+")[2-9][a-z]{2}[2-9]{2}[a-z]{2}[2-9]$";
 	
 		
 	if(text.match(p1)){
@@ -153,7 +154,10 @@ function validate(text,keywords){
 		output.push(["p4","full"]);
 	}
 	if(text.match(p5)){
-		output.push(["p5","full"]);
+		output.push(["shonin","full"]);
+	}
+	if(text.match(p6)){
+		output.push(["unlimited","full"]);
 	}
 	if(output.length>0){
 		return output;	
@@ -164,7 +168,8 @@ function validate(text,keywords){
 	var p2="^[2-9][a-z][a-z][a-z][2-9].*[a-z][2-9][a-z][2-9][a-z]$";
 	var p3="^[2-9][p-z][a-h][2-9].*[p-z][2-9][p-z][2-9][p-z]$";
 	var p4="^[2-9][a-z][a-z][2-9].*[a-z][2-9][2-9][2-9][a-z]$";
-	var p5="^[a-z]{8}[2-9]*[2-9]$");
+	var p5="^[a-z]{8}[2-9].*[2-9]$";
+	var p6="^.*[2-9][a-z]{2}[2-9]{2}[a-z]{2}[2-9]$";
 
 	if(text.match(p1)){
 		output.push(["p1","pattern"]);
@@ -179,27 +184,35 @@ function validate(text,keywords){
 		output.push(["p4","pattern"]);
 	}
 	if(text.match(p5)){
-		output.push(["p5","pattern"]);
+		output.push(["shonin","pattern"]);
+	}
+	if(text.match(p6)){
+		output.push(["unlimited","pattern"]);
 	}
 
-	if(output.length>0){
-		return output;	
-	}
-	
 	// check keywords
 	var i = text.length;
 	if (i-10>0){
-		var p1= "[".text."]{".i-10."}";	
+		var p1= "^["+text+"]{"+(i-10)+"}$";	
 	}
 	if (i-9>0){
-		var p2 = "[".text."]{".i-9."}";
+		var p2 = "^["+text+"]{"+(i-9)+"}$";
 	}
-        if(text.match(p1)){
-        	output.push(["keyword","pattern"]);
-        }
-        if(text.match(p2)){
-        	output.push(["keyword","pattern"]);
-        }
+	if (i-8>0){
+		var p3 = "^["+text+"]{"+(i-8)+"}$";
+	}
+	
+	for(j=0;j<keywords.length;j++){
+	        if(keywords[j].match(p1)){
+        		output.push(["keyword","pattern",keywords[j]]);
+        	}
+        	if(keywords[j].match(p2)){
+        		output.push(["keyword","pattern",keywords[j]]);
+        	}
+		if(keywords[j].match(p3)){
+			output.push(["keyword","pattern",keywords[j]]);
+		}
+	}
 	if(output.length>0){
 		return output;	
 	}
