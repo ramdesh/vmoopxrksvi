@@ -204,13 +204,13 @@ function validate(text,keywords){
 	
 	for(j=0;j<keywords.length;j++){
 	        if(keywords[j].match(p1)){
-        		output.push(["keyword","pattern",keywords[j]]);
+        		output.push(["keyword","jumbled",keywords[j]]);
         	}
         	if(keywords[j].match(p2)){
-        		output.push(["keyword","pattern",keywords[j]]);
+        		output.push(["keyword","jumbled",keywords[j]]);
         	}
 		if(keywords[j].match(p3)){
-			output.push(["keyword","pattern",keywords[j]]);
+			output.push(["keyword","jumbled",keywords[j]]);
 		}
 	}
 	if(output.length>0){
