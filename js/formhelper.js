@@ -45,6 +45,7 @@ function recordLog(){
 }
 
 function formValidate(obj,text){
+	classstring="";
 	var ret = validate(text,keywords);
 	if(ret.length>0){
 		if(ret[0][1]=="full"){
