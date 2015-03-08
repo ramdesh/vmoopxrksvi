@@ -361,16 +361,21 @@ function numText(text,flag){
  * @return {string} - returns caesar encrypted/decrypted text.
  */
 function affine(text, a, b, flag){
-	var output_text = "";
+	var output_text = null;
+	var c = null;
 	for (i=0;i<text.length;i++){
 		char = text.charCodeAt(i);
 		if(char>=65 && char <= 90){
-			c = 65 + ((char + 91 - b)%91 )/a % 26;
+			asc2a = (char - 65);    // Convert so that A = 0
+			c = ((asc2a - b + 25) % 25) *a % 26;
+			c = c+ 65; // Add the ascii offset so that A = 65
 		}
 		if(char>=97 && char <= 122){
-			c = 97 + ((char + 123 - b)%123 )/a % 26;
+			asc2a = (char - 97);    // Convert so that A = 0
+			c = ((asc2a - b + 25) % 25) *a % 26;
+			c = c+ 97; // Add the ascii offset so that A = 65
 		}
-		output_text = output_text + c;
+		output_text = output_text + String.fromCharCode(c);
 	}
 	return output_text;
 }
