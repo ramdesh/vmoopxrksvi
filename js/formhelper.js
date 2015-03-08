@@ -117,6 +117,21 @@ function formRotN(){
 	formValidate();
 }
 
+function formAffine(){
+	var text = $("#outputText").val();
+	$(".multioutput").remove();
+	a = [9,21,15, 3,19, 7,23,11, 5,17,25];
+	for(i=0;i<=a.length;i++){
+		for(b=0;b<26;b++){
+			ret = affine(text,a[i],b,0);
+			$("#multioutput").append("<div class=\"multioutput\" >"+ret+" Affine A/B:"+a[i]+"/"+b+"</div>");
+			$("#multioutput .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+			$("#multioutput .multioutput:last-child").addClass(formValidate("",ret));
+		}
+	}
+	formValidate();
+}
+
 function formColumnar(type){
 	var text = $("#outputText").val();
 	var fac = factors(text);
