@@ -361,6 +361,7 @@ function numText(text,flag){
  * @return {string} - returns caesar encrypted/decrypted text.
  */
 function affine(text, a, b, flag){
+	var output_text = "";
 	for (i=0;i<text.length;i++){
 		char = text.charCodeAt(i);
 		if(char>=65 && char <= 90){
