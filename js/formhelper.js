@@ -63,7 +63,7 @@ function formValidate(obj,text){
 	}
 	if(obj){
 		$(obj).removeClass("btn-success btn-warning btn-info");
-		if(typeof classstring === 'undefined'){
+		if(typeof classstring !== 'undefined'){
 			$(obj).addClass(classstring);
 		}
 	}
