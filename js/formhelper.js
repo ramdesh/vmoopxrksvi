@@ -124,7 +124,7 @@ function formAffine(){
 	for(i=0;i<=a.length;i++){
 		for(b=0;b<26;b++){
 			ret = affine(text,a[i],b,0);
-			$("#multioutput").append("<div class=\"multioutput\" >"+ret+" (Affine A/B:"+a[i]+"/"+b+") </div>");
+			$("#multioutput").append("<div class=\"multioutput\" >"+ret+" (Affine A/B:"+a[i]+"/"+i+") </div>");
 			$("#multioutput .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
 			$("#multioutput .multioutput:last-child").addClass(formValidate("",ret));
 		}
