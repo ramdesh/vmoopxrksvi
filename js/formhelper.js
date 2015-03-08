@@ -120,7 +120,7 @@ function formRotN(){
 function formAffine(){
 	var text = $("#outputText").val();
 	$(".multioutput").remove();
-	a = [9,21,15, 3,19, 7,23,11, 5,17,25];
+	a = new Array(9,21,15,3,19,7,23,11,5,17,25);
 	for(i=0;i<=a.length;i++){
 		for(b=0;b<26;b++){
 			ret = affine(text,a[i],b,0);
