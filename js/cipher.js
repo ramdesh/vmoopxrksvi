@@ -365,7 +365,7 @@ function affine(text, a, b, flag){
 	for (i=0;i<text.length;i++){
 		char = text.charCodeAt(i);
 		if(char>=65 && char <= 90){
-			c = 65 + ((char + 91 - b)%91 /a % 26);
+			c = 65 + ((char + 91 - b)%91 )/a % 26;
 		}
 		if(char>=97 && char <= 122){
 			c = 97 + ((char + 123 - b)%123 )/a % 26);
