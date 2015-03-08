@@ -353,6 +353,28 @@ function numText(text,flag){
 }
 
 /**
+ * Converts the input text using caesar cipher using an alphabet [a-z] and [A-Z].
+ * @param {string} text - text to be encrypted/decrypted.
+ * @param {integer} a - shift for a.
+ * @param {integer} b - shift for b.
+ * @param {integer} flag - 0: for encrypt 1: for decrypt
+ * @return {string} - returns caesar encrypted/decrypted text.
+ */
+function affine(text, a, b, flag){
+	for (i=0;i<text.length;i++){
+		char = text.charCodeAt(i);
+		if(char>=65 && char <= 90){
+			c = (65 + ((char + 91 - b))%91 )/a % 26;
+		}
+		if(char>=97 && char <= 122){
+			c = (97 + ((char + 123 - b))%123 )/a % 26;
+		}
+		output_text = output_text + c;
+	}
+	return output_text;
+}
+
+/**
  * Converts the case of the text. Leaves non alphabetic characters as it is.
  * @param {string} text - text to be converted.
  * @return {string} - returns the converted text.
