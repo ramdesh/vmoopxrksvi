@@ -164,7 +164,7 @@ function validate(text,keywords){
 	}
 			
 	// check pattern matches
-	var p1="^[2-9][p-z][p-z][a-h].*[2-9][p-z][2-9][2-9][2-9][p-z]$";
+	var p1="^[2-9][p-z][p-z][a-h][2-9].*[p-z][2-9][2-9][2-9][p-z]$";
 	var p2="^[2-9][a-z][a-z][a-z][2-9].*[a-z][2-9][a-z][2-9][a-z]$";
 	var p3="^[2-9][p-z][a-h][2-9].*[p-z][2-9][p-z][2-9][p-z]$";
 	var p4="^[2-9][a-z][a-z][2-9].*[a-z][2-9][2-9][2-9][a-z]$";
