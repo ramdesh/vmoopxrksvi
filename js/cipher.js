@@ -389,7 +389,7 @@ function affine(text, a, b, flag){
 function caseSwitch(text){
 	var output = "";
 	for(i=0;i<text.length;i++){
-		c = text.CharAt(i);
+		c = text.charAt(i);
 		if(c==c.toUpperCase()){
 			output = output+c.toLowerCase();
 		}
@@ -400,4 +400,5 @@ function caseSwitch(text){
 			output = output + c;
 		}
 	}
+	return output;
 }
