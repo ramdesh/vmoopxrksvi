@@ -199,6 +199,23 @@ function formColumnar(type){
 	
 }
 
+function formSpiral(){
+	var text = $("#outputText").val();
+	var fac = factors(text);
+	$(".multioutput").remove();
+	$("#outputText").removeClass("btn-success btn-warning");
+	$("#multioutput").append("<div class=\"multioutput\" id=\"column0\"><h5><b>Top Left - Clockwise</b></h5></div>");
+
+	for(i=0;i<fac.length;i++){
+		ret = spiral(text,fac[i],0);
+		$("#multioutput #column0").append("<div class=\"multioutput\">"+ret+" (columns:"+fac[i]+")</div>");
+		$("#multioutput #column0 .multioutput:last-child").addClass(formValidate("",ret));
+		$("#multioutput #column0 .multioutput:last-child").attr("value",ret);
+		$("#multioutput #column0 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+	}
+	
+}
+
 function formLettersNum(flag){
 	text = $("#outputText").val();
 	text = numText(text,flag);
