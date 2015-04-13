@@ -9,7 +9,7 @@ function doAll(){
 	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
 	
 	//atbash()
-	output = atbash(text);s
+	output = atbash(text);
 	$("#multioutput").append("<div class=\"multioutput\" id=\"atbash\"><h5><b>Atbash</b></h5></div>");
 	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
 	
