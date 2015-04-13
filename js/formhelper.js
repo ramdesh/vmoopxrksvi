@@ -9,7 +9,7 @@ function doAll(){
 	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
 	
 	//atbash()
-	output = atbash(text);
+	output = atbash(text);s
 	$("#multioutput").append("<div class=\"multioutput\" id=\"atbash\"><h5><b>Atbash</b></h5></div>");
 	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
 	
@@ -225,7 +225,7 @@ function formSpiral(){
 	// Bottom Left - Clockwise
 	for(i=0;i<fac.length;i++){
 		tmp = columnar_transposition(text,fac[i],2,0);
-		ret = spiral(tmp,Math.ceil(text.length/fac[i],0);
+		ret = spiral(tmp,Math.ceil(text.length/fac[i]),0);
 		$("#multioutput #column1").append("<div class=\"multioutput\">"+ret+" (columns:"+fac[i]+")</div>");
 		$("#multioutput #column1 .multioutput:last-child").addClass(formValidate("",ret));
 		$("#multioutput #column1 .multioutput:last-child").attr("value",ret);
