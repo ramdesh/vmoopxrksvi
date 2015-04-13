@@ -9,7 +9,7 @@ function doAll(){
 	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
 	
 	//atbash()
-	output = atbash(text);
+	output = atbash(text);s
 	$("#multioutput").append("<div class=\"multioutput\" id=\"atbash\"><h5><b>Atbash</b></h5></div>");
 	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
 	
@@ -197,6 +197,100 @@ function formColumnar(type){
 
 	}
 	
+}
+
+function formSpiral(){
+	var text = $("#outputText").val();
+	var fac = factors(text);
+	$(".multioutput").remove();
+	$("#outputText").removeClass("btn-success btn-warning");
+	$("#multioutput").append("<div class=\"multioutput\" id=\"column0\"><h5><b>Top Left - Clockwise</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\" id=\"column1\"><h5><b>Bottom Left - Clockwise</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\" id=\"column2\"><h5><b>Bottom Right - Clockwise</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\" id=\"column3\"><h5><b>Top Right - Clockwise</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\" id=\"column4\"><h5><b>Top Right - Anti-Clockwise</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\" id=\"column5\"><h5><b>Bottom Right - Anti-Clockwise</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\" id=\"column6\"><h5><b>Bottom Left - Anti-Clockwise</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\" id=\"column7\"><h5><b>Top Left - Anti-Clockwise</b></h5></div>");
+
+	// Top Left - Clockwise	
+	for(i=0;i<fac.length;i++){
+		ret = spiral(text,fac[i],0);
+		$("#multioutput #column0").append("<div class=\"multioutput\">"+ret+" (columns:"+fac[i]+")</div>");
+		$("#multioutput #column0 .multioutput:last-child").addClass(formValidate("",ret));
+		$("#multioutput #column0 .multioutput:last-child").attr("value",ret);
+		$("#multioutput #column0 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+	}
+
+	// Bottom Left - Clockwise
+	for(i=0;i<fac.length;i++){
+		tmp = columnar_transposition(text,fac[i],2,0);
+		ret = spiral(tmp,Math.ceil(text.length/fac[i]),0);
+		$("#multioutput #column1").append("<div class=\"multioutput\">"+ret+" (columns:"+fac[i]+")</div>");
+		$("#multioutput #column1 .multioutput:last-child").addClass(formValidate("",ret));
+		$("#multioutput #column1 .multioutput:last-child").attr("value",ret);
+		$("#multioutput #column1 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+	}
+	
+	// Bottom Right - Clockwise
+	for(i=0;i<fac.length;i++){
+		tmp = columnar_transposition(text,fac[i],5,0);
+		ret = spiral(tmp,fac[i],0);
+		$("#multioutput #column2").append("<div class=\"multioutput\">"+ret+" (columns:"+fac[i]+")</div>");
+		$("#multioutput #column2 .multioutput:last-child").addClass(formValidate("",ret));
+		$("#multioutput #column2 .multioutput:last-child").attr("value",ret);
+		$("#multioutput #column2 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+	}
+	
+	// Top Right - Clockwise
+	for(i=0;i<fac.length;i++){
+		tmp = columnar_transposition(text,fac[i],1,0);
+		ret = spiral(tmp,Math.ceil(text.length/fac[i]),0);
+		$("#multioutput #column3").append("<div class=\"multioutput\">"+ret+" (columns:"+fac[i]+")</div>");
+		$("#multioutput #column3 .multioutput:last-child").addClass(formValidate("",ret));
+		$("#multioutput #column3 .multioutput:last-child").attr("value",ret);
+		$("#multioutput #column3 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+	}
+	
+	//Top Right - Anti-Clockwise
+	for(i=0;i<fac.length;i++){
+		tmp = columnar_transposition(text,fac[i],4,0);
+		ret = spiral(tmp,fac[i],0);
+		$("#multioutput #column4").append("<div class=\"multioutput\">"+ret+" (columns:"+fac[i]+")</div>");
+		$("#multioutput #column4 .multioutput:last-child").addClass(formValidate("",ret));
+		$("#multioutput #column4 .multioutput:last-child").attr("value",ret);
+		$("#multioutput #column4 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+	}
+	
+	//Bottom Right - Anti-Clockwise
+	for(i=0;i<fac.length;i++){
+		tmp = columnar_transposition(text,fac[i],3,0);
+		ret = spiral(tmp,Math.ceil(text.length/fac[i]),0);
+		$("#multioutput #column5").append("<div class=\"multioutput\">"+ret+" (columns:"+fac[i]+")</div>");
+		$("#multioutput #column5 .multioutput:last-child").addClass(formValidate("",ret));
+		$("#multioutput #column5 .multioutput:last-child").attr("value",ret);
+		$("#multioutput #column5 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+	}
+	
+	//Bottom Left - Anti-Clockwise
+	for(i=0;i<fac.length;i++){
+		tmp = columnar_transposition(text,fac[i],7,0);
+		ret = spiral(tmp,fac[i],0);
+		$("#multioutput #column6").append("<div class=\"multioutput\">"+ret+" (columns:"+fac[i]+")</div>");
+		$("#multioutput #column6 .multioutput:last-child").addClass(formValidate("",ret));
+		$("#multioutput #column6 .multioutput:last-child").attr("value",ret);
+		$("#multioutput #column6 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+	}
+	
+	//Top Left - Anti-Clockwise
+	for(i=0;i<fac.length;i++){
+		tmp = columnar_transposition(text,fac[i],0,0);
+		ret = spiral(tmp,Math.ceil(text.length/fac[i]),0);
+		$("#multioutput #column7").append("<div class=\"multioutput\">"+ret+" (columns:"+fac[i]+")</div>");
+		$("#multioutput #column7 .multioutput:last-child").addClass(formValidate("",ret));
+		$("#multioutput #column7 .multioutput:last-child").attr("value",ret);
+		$("#multioutput #column7 .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+	}
 }
 
 function formLettersNum(flag){

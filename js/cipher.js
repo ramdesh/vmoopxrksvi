@@ -389,7 +389,7 @@ function affine(text, a, b, flag){
 function caseSwitch(text){
 	var output = "";
 	for(i=0;i<text.length;i++){
-		c = text.CharAt(i);
+		c = text.charAt(i);
 		if(c==c.toUpperCase()){
 			output = output+c.toLowerCase();
 		}
@@ -400,4 +400,70 @@ function caseSwitch(text){
 			output = output + c;
 		}
 	}
+	return output;
+}
+
+/**
+ * Converts the text using spiral reading.
+ * @param {string} text - text to be rotated.
+ * @param {integer} n - width of the box to be used. Height is auto calculated using the length of the text.
+ * @param {integer} flag - 0: for clockwise rotation 1: for anti-clockwise rotation 
+ * @return {string} - returns the rotated text.
+ * @author - KJ <kulendra@gmail.com>
+ */
+function spiral(text, n, flag){
+	var xstart=1;
+	var ystart=1;
+	var dir=1;
+	var xmax=n;
+	var ymax=Math.ceil(text.length/n);
+	var output="";
+	var currentCol=xstart;
+	var currentRow=ystart;
+	var i=0;
+	var j=0;
+	var lbreak=false;
+
+	do{
+		i=xstart;
+        lbreak = false;
+		while(lbreak == false){
+        	c = text.charAt((currentRow-1)*n+i-1);
+            output = output + c;
+			i+=dir;
+            if (dir>0 && i>xmax){
+            	lbreak = true;   
+			}
+            if (dir <0 && i<xmax){
+            	lbreak = true;
+			}
+		}
+ 		currentCol = i - dir;
+		ystart +=dir;
+
+        lbreak = false;
+        j = ystart;
+        while(lbreak==false){
+			c = text.charAt((j-1)*n+currentCol-1);
+			output = output + c;
+            j+=dir;     
+            if (dir>0 && j>ymax){
+            	lbreak = true;   
+			}
+            if (dir <0 && j<ymax){
+            	lbreak = true;
+            }               
+		}
+        
+		dir = (-1)*dir;
+        currentRow = j + dir;
+
+        xmax = xstart;		
+        ymax = ystart;
+        xstart = currentCol+=dir;
+	    ystart = currentRow;
+	}
+	while(output.length<text.length);
+	
+	return output;
 }
