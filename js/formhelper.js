@@ -318,3 +318,24 @@ function formGroup(n){
 	}
 	$("#outputText").val(output);
 }
+
+function formLetters_n_Numbers(){
+	var text = $("#outputText").val();
+	$(".multioutput").remove();
+	$("#outputText").removeClass("btn-success btn-warning");
+	$("#multioutput").append("<div class=\"multioutput\" id=\"letters\"><h5><b>Letters</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\" id=\"numbers\"><h5><b>Numbers</b></h5></div>");
+	
+	ret = removeCharRange(text,"numbers")
+	$("#multioutput #letters").append("<div class=\"multioutput\">"+ret+"</div>");
+	$("#multioutput #letters .multioutput:last-child").addClass(formValidate("",ret));
+	$("#multioutput #letters .multioutput:last-child").attr("value",ret);
+	$("#multioutput #letters .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+
+	ret = removeCharRange(text,"lowercase");
+	ret = removeCharRange(ret,"uppercase");
+	$("#multioutput #numbers").append("<div class=\"multioutput\">"+ret+"</div>");
+	$("#multioutput #numbers .multioutput:last-child").addClass(formValidate("",ret));
+	$("#multioutput #numbers .multioutput:last-child").attr("value",ret);
+	$("#multioutput #numbers .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
+}
