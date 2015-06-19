@@ -465,5 +465,8 @@ function spiral(text, n, flag){
 	}
 	while(output.length<text.length);
 	
+	if (output.length>text.length){
+		output = output.substr(0,text.length);
+	}
 	return output;
 }
