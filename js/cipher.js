@@ -93,9 +93,12 @@ function atbash(text, flag) {
     character = text.charAt(i);
     index = az.indexOf(character);
     if(index >= 0){
-    	if(index >= 51){
-    		if (flag == 0 ){
+    	if(flag == 0){
+    		if (index >= 51 ){
     			outputchar = character;
+    		}
+    		else{
+    			outputchar = za[index];	
     		}
     	}
     	else{
