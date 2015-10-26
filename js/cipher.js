@@ -91,7 +91,7 @@ function atbash(text, flag) {
   var za = ["z","y","x","w","v","u","t","s","r","q","p","o","n","m","l","k","j","i","h","g","f","e","d","c","b","a","Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A","9","8","7","6","5","4","3","2","1","-","."];
   for (i = 0; i < text.length; i++) {
     character = text.charAt(i);
-    index = az.IndexOf(character);
+    index = az.indexOf(character);
     if(index >= 0){
     	if(index >= 51){
     		if (flag =1 ){
