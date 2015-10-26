@@ -87,19 +87,19 @@ function atbash(text, flag) {
   var outputchar = "";
   var outputtext = "";
 
-  var az1 = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9",".","-"];
-  var za1 = ["z","y","x","w","v","u","t","s","r","q","p","o","n","m","l","k","j","i","h","g","f","e","d","c","b","a","Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A","9","8","7","6","5","4","3","2","1","-","."];
+  var az = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9",".","-"];
+  var za = ["z","y","x","w","v","u","t","s","r","q","p","o","n","m","l","k","j","i","h","g","f","e","d","c","b","a","Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A","9","8","7","6","5","4","3","2","1","-","."];
   for (i = 0; i < text.length; i++) {
     character = text.charAt(i);
-    index = az1.IndexOf(character);
+    index = az.IndexOf(character);
     if(index >= 0){
     	if(index >= 51){
     		if (flag =1 ){
-    			outputchar = za1[index];
+    			outputchar = za[index];
     		}
     	}
     	else{
-    		outputchar = za1[index];
+    		outputchar = za[index];
     	}
     }
     outputtext = outputtext + outputchar;
