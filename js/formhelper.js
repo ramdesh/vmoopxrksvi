@@ -9,8 +9,13 @@ function doAll(){
 	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
 	
 	//atbash()
-	output = atbash(text);
+	output = atbash(text,0);
 	$("#multioutput").append("<div class=\"multioutput\" id=\"atbash\"><h5><b>Atbash</b></h5></div>");
+	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
+	
+	//atbash all
+	output = atbash(text,1);
+	$("#multioutput").append("<div class=\"multioutput\" id=\"atbash-all\"><h5><b>Atbash All</b></h5></div>");
 	$("#multioutput").append("<div class=\"multioutput\">"+output+"</div>");
 	
 	//odd-even()
@@ -74,7 +79,13 @@ function formValidate(obj,text){
 }
 
 function formAtbash(){
-	text = atbash($("#outputText").val());
+	text = atbash($("#outputText").val(),0);
+	$("#outputText").val(text);
+	formValidate($("#outputText"),text);
+}
+
+function formAtbashAll(){
+	text = atbash($("#outputText").val(),1);
 	$("#outputText").val(text);
 	formValidate($("#outputText"),text);
 }

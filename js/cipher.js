@@ -76,30 +76,38 @@ function removeCharRange(text, range) {
  * Converts the input text in to an atbash cipher using an alphabet [a-z] and [A-Z].
  * Numbers and all other characters are left as they are.
  * @param {string} text - text to be atbashed.
+ * @param {integer} flag - flag denoting the type of the atbash (letters only, letters and numbers).
  * @return {string} - returns atbash converted string of the input.
- * @todo - Currently this function uses a pure a-z alphabet and uses the ASCII offset
- * to find the atbash. Will not work with anything outside the a-z alphabet OR numbers.
  * @author - KJ <kulendra@gmail.com>
  */
-function atbash(text) {
-
+function atbash(text, flag) {
   var i = 0;
+  var index = 0;
   var character = "";
   var outputchar = "";
   var outputtext = "";
+
+  var az1 = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9",".","-"];
+  var za1 = ["z","y","x","w","v","u","t","s","r","q","p","o","n","m","l","k","j","i","h","g","f","e","d","c","b","a","Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A","9","8","7","6","5","4","3","2","1","-","."];
   for (i = 0; i < text.length; i++) {
-    character = text.charCodeAt(i);
-    if (character >= 65 && character <= 90) {
-      outputchar = String.fromCharCode(155 - character);
-    } else if (character >= 97 && character <= 122) {
-      outputchar = String.fromCharCode(219 - character);
-    } else {
-      outputchar = String.fromCharCode(character);
+    character = text.charAt(i);
+    index = az1.IndexOf(character);
+    if(index >= 0){
+    	if(index >= 51){
+    		if (flag =1 ){
+    			outputchar = za1[index];
+    		}
+    	}
+    	else{
+    		outputchar = za1[index];
+    	}
     }
     outputtext = outputtext + outputchar;
   }
   return outputtext;
 }
+
+
 /**
  * Converts the input text using caesar cipher using an alphabet [a-z] and [A-Z].
  * @param {string} text - text to be encrypted/decrypted.
@@ -443,7 +451,7 @@ function spiral(text, n, flag){
 
         lbreak = false;
         j = ystart;
-        while(lbreak==false){
+        while(lbreak==false){a
 			c = text.charAt((j-1)*n+currentCol-1);
 			output = output + c;
             j+=dir;     
