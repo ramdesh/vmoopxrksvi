@@ -302,7 +302,8 @@ function columnar_transposition(text, n, flag, type) {
  * Converts the input text into their Ascii values
  * @param {string} text - text to be encrypted/decrypted.
  * @param {integer} flag - 0: number to letter 1: letter to number 2: Ascii to characters 3: char to Ascii
- *                         4: hex to char 5: char to hex 6: b64 to char 7:char to b64
+ *                         4: hex to char 5: char to hex 6: b64 to char 7:char to b64 
+ *                         8: oct to char 9: char to oct
  * @return {string} - returns the converted text.
  * @todo - The ASCII and Hex conversions assume that it will be all doublets. I can't think of a better alternative.
  * @author - KJ <kulendra@gmail.com>
@@ -352,6 +353,16 @@ function numText(text,flag){
   	else if(flag==5){
 		// A->Hex
   		output = output + text.charCodeAt(i).toString(16);
+  	}
+  	else if(flag==8){
+		// Oct->A
+  		character = text.charAt(i)+text.charAt(i+1);
+  		output = output + String.fromCharCode(parseInt(character,8));
+  		i++;
+  	}
+  	else if(flag==9){
+		// A->Oct
+  		output = output + text.charCodeAt(i).toString(8);
   	}
   }
   if(flag==6){
