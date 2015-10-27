@@ -457,7 +457,7 @@ function spiral(text, n, flag){
 
         lbreak = false;
         j = ystart;
-        while(lbreak==false){a
+        while(lbreak==false){
 			c = text.charAt((j-1)*n+currentCol-1);
 			output = output + c;
             j+=dir;     
