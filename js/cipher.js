@@ -105,6 +105,9 @@ function atbash(text, flag) {
     		outputchar = za[index];
     	}
     }
+    else{
+    	outputchar = character;
+    }
     outputtext = outputtext + outputchar;
   }
   return outputtext;
