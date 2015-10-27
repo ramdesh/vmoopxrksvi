@@ -350,3 +350,18 @@ function formLetters_n_Numbers(){
 	$("#multioutput #numbers .multioutput:last-child").attr("value",ret);
 	$("#multioutput #numbers .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
 }
+
+function formMorse(){
+	j = 0;
+	text = $("#outputText").val();
+        //Check if this is az09 or otherwise
+ 		if(text.search(/[^a-z0-9]/i)!=-1){
+        	// no characters therefore decode
+        	text = morse(text,1);	
+        }
+        else{
+        	text = morse(text,0);
+        }
+	$("#outputText").val(text);
+	formValidate($("#outputText"),text);
+}
