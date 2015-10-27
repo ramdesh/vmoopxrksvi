@@ -481,3 +481,52 @@ function spiral(text, n, flag){
 	}
 	return output;
 }
+
+/**
+ * Code and decode using morse.
+ * @param {string} text - text to be converted.
+ * @param {int} flag - 0: encode to morse, 1: decode from morse
+ * @return {string} - returns the converted text.
+ * @author - KJ <kulendra@gmail.com>
+ */
+function morse(text,flag){
+	var i = 0;
+  	var index = 0;
+  	var character = "";
+  	var outputchar = "";
+  	var outputtext = "";
+  	
+  	var az = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..",".----","..---","...--","....-",".....","-....","--...","---..","----.","-----"];
+  	var za = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",1","2","3","4","5","6","7","8","9","0"];
+  	
+  	if (flag == 0){
+  		// Encode
+  		text = text.toLowerCase();
+  		for(i=0;i<text.length;i++){
+  			index = za.indexOf(text.charAt(i));
+  			if(index !=-1){
+  				outputchar = az[index]+" ";
+  			}
+  			else{
+  				outputchar = "# "; // hash is an invalid map
+  			}
+  			outputtext = outputtext + outputchar;
+  		}
+  	}
+  	else if (flag == 1){
+  		// Decode
+  		// First explode by space
+  		ar = text.split(" ");
+  		for(i=0;i<text.length;i++){
+  			index = az.indexOf(text.charAt(i));
+  			if(index !=-1){
+  				outputchar = za[index];
+  			}
+  			else{
+  				outputchar = "#"; // hash is an invalid map
+  			}
+  			outputtext = outputtext + outputchar;
+  		}
+  	}
+	return outputtext;  	
+}
