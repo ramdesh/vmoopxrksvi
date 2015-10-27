@@ -354,14 +354,9 @@ function formLetters_n_Numbers(){
 function formMorse(){
 	j = 0;
 	text = $("#outputText").val();
-        //Check if this is .- or otherwise
-        for(i=0;i<text.length;i++){
-        	if(text.charAt(i)=="."||text.charAt(i)=="-"){
-        		j++;
-        	}
-        }
-        if(j+1==text.length){
-        	// this is purely .- therefore decode
+        //Check if this is az09 or otherwise
+ 		if(text.search(/[^a-z0-9]/i)!=-1){
+        	// no characters therefore decode
         	text = morse(text,1);	
         }
         else{
