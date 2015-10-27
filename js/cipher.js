@@ -512,13 +512,15 @@ function morse(text,flag){
   			}
   			outputtext = outputtext + outputchar;
   		}
+  		outputtext = outputtext.trim();
   	}
   	else if (flag == 1){
   		// Decode
   		// First explode by space
+  		text = text.trim();
   		ar = text.split(" ");
-  		for(i=0;i<text.length;i++){
-  			index = az.indexOf(text.charAt(i));
+  		for(i=0;i<ar.length;i++){
+  			index = az.indexOf(ar[i]);
   			if(index !=-1){
   				outputchar = za[index];
   			}
