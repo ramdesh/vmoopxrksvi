@@ -139,6 +139,7 @@ function validate(text,keywords){
 	var p4="^[2-9][a-z][a-z][2-9]("+keywords.join("|")+")[a-z][2-9][2-9][2-9][a-z]$";
 	var p5="^[a-z]{8}[2-9]("+keywords.join("|")+")[2-9]$";
 	var p6="^("+keywords.join("|")+")[2-9][a-z]{2}[2-9]{2}[a-z]{2}[2-9]$";
+	var p7="^[a-z][a-z][a-z][2-9][2-9]("+keywords.join("|")+")[2-9][2-9][2-9][a-z][a-z]$";
 	
 		
 	if(text.match(p1)){
@@ -159,6 +160,9 @@ function validate(text,keywords){
 	if(text.match(p6)){
 		output.push(["unlimited","full"]);
 	}
+	if(text.match(p7)){
+		output.push(["p7","full"]);
+	}
 	if(output.length>0){
 		return output;	
 	}
@@ -170,6 +174,7 @@ function validate(text,keywords){
 	var p4="^[2-9][a-z][a-z][2-9].*[a-z][2-9][2-9][2-9][a-z]$";
 	var p5="^[a-z]{8}[2-9].*[2-9]$";
 	var p6="^.*[2-9][a-z]{2}[2-9]{2}[a-z]{2}[2-9]$";
+	var p7="^[a-z][a-z][a-z][2-9][2-9].*[2-9][2-9][2-9][a-z][a-z]$";
 
 	if(text.match(p1)){
 		output.push(["p1","pattern"]);
@@ -188,6 +193,9 @@ function validate(text,keywords){
 	}
 	if(text.match(p6)){
 		output.push(["unlimited","pattern"]);
+	}
+	if(text.match(p7)){
+		output.push(["p7","pattern"]);
 	}
 
 	// check keywords
