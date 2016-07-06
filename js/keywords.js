@@ -395,6 +395,7 @@ var keywords=[
 "symbol",
 "symbols",
 "tenniel",
+"technology",
 "thought",
 "time",
 "timezero",
