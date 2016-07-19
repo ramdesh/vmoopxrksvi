@@ -118,7 +118,7 @@ function atbash(text, flag) {
  * Converts the input text using caesar cipher using an alphabet [a-z] and [A-Z].
  * @param {string} text - text to be encrypted/decrypted.
  * @param {integer} n - shift for caesar.
- * @param {integer} flag - 0: for encrypt 1: for decrypt
+ * @param {integer} flag - 0: for letters only 1: for numbers
  * @return {string} - returns caesar encrypted/decrypted text.
  */
 function caesar(text, n, flag) {
@@ -129,11 +129,15 @@ function caesar(text, n, flag) {
   var outputtext = "";
   for (i = 0; i < text.length; i++) {
     character = text.charCodeAt(i);
+	
     if (character >= 65 && character <= 90) {
-      outputchar = String.fromCharCode(65 + ((character + n) % 91)%65);
+      outputchar = String.fromCharCode(65 + (((character + n + 26)%117)%91)%65);
     } else if (character >= 97 && character <= 122) {
-      outputchar = String.fromCharCode(97 + ((character + n) % 123)%97);
-    } else {
+      outputchar = String.fromCharCode(97 + (((character + n + 26)%149)%123)%97);
+    } else if (character >= 48 && character <= 57 && flag == 1) {
+      outputchar = String.fromCharCode(48 + (((character + n%10 + 10)%68)%58)%48);
+    }
+	else {
       outputchar = String.fromCharCode(character);
     }
     outputtext = outputtext + outputchar;
