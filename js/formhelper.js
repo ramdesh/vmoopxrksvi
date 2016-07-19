@@ -116,11 +116,17 @@ function formOddEven(){
 	$("#multioutput #even .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
 }
 
-function formRotN(){
+function formRotN(flag){
 	var text = $("#outputText").val();
 	$(".multioutput").remove();
-	for(i=1;i<=25;i++){
-		ret = caesar(text,i,0);
+	if(flag==1){
+		j = -25;
+	}
+	else{
+		j = 1;
+	}
+	for(i=j;i<=25;i++){
+		ret = caesar(text,i,flag);
 		$("#multioutput").append("<div class=\"multioutput\" >"+ret+" rot:"+i+"</div>");
 		$("#multioutput .multioutput:last-child").attr("ondblclick","clickToCopy(\""+ret+"\")");
 		$("#multioutput .multioutput:last-child").addClass(formValidate("",ret));
