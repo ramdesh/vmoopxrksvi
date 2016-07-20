@@ -371,3 +371,10 @@ function formMorse(){
 	$("#outputText").val(text);
 	formValidate($("#outputText"),text);
 }
+
+function formSym2Num(){
+	text = $("#outputText").val();
+	text = sym2num(text);
+	$("#outputText").val(text);
+	formValidate($("#outputText"),text);
+}
