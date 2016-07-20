@@ -539,3 +539,27 @@ function morse(text,flag){
   	}
 	return outputtext;  	
 }
+
+/**
+ * Decode using @->2, #->3 type of symbols to numbers translation.
+ * @param {string} text - text to be converted.
+ * @return {string} - returns the converted text.
+ * @author - KJ <kulendra@gmail.com>
+ */
+function sym2num(text){
+	var sym = ["!","@","#","$","%","^","&","*","(",")"];
+	var num = ["1","2","3","4","5","6","7","8","9","0"];
+	var outputtext = "";
+	var outputchar = "";
+	
+	for (i=0;i<text.length;i++){
+		index = sym.indexOf(text.charAt(i));
+		if (index!=-1){
+			outputchar = outputchar + num[index];
+		}
+		else{
+			outputchar = outputchar + text.charAt(i);
+		}
+	}
+	return outputchar;
+}
